@@ -1,5 +1,16 @@
 package com.aad.easy.strings;
 
+/*Interleaved String
+        Easy
+
+        Given two strings s0 and s1, return the two strings interleaved, starting with s0.
+        If there are leftover characters in a string they should be added to the end.
+
+        Constraints
+
+        n ≤ 100,000 where n is the length of s0
+        m ≤ 100,000 where n is the length of s1*/
+
 public class InterLeave {
     public String solve(String s0, String s1) {
         StringBuilder result = new StringBuilder();
