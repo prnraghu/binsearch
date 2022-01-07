@@ -24,4 +24,10 @@ public class VerticalCipher {
         }
         return result;
     }
+
+    public static void main(String args[]){
+        VerticalCipher vc = new VerticalCipher();
+
+
+    }
 }
