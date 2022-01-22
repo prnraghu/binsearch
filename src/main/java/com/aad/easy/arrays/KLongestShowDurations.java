@@ -41,4 +41,28 @@ class KLongestShowDurations {
 
 
     }
+
+
+    public int solveWithPQ(String[] shows, int[] durations, int k) {
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < shows.length; i++) {
+            map.put(shows[i], map.getOrDefault(shows[i], 0) + durations[i]);
+        }
+
+        PriorityQueue<String> minHeap = new PriorityQueue<>((a, b) -> map.get(a) - map.get(b));
+        for (String key : map.keySet()) {
+            minHeap.offer(key);
+
+            if (minHeap.size() > k) {
+                minHeap.poll();
+            }
+        }
+
+        int ans = 0;
+        while (!minHeap.isEmpty()) {
+            ans += map.get(minHeap.poll());
+        }
+
+        return ans;
+    }
 }
