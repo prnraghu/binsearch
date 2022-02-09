@@ -65,4 +65,19 @@ class KLongestShowDurations {
 
         return ans;
     }
+
+    public int solveByStream(String[] shows, int[] durations, int k) {
+        Map<String, Integer> watched = new HashMap<>();
+
+        for (int i = 0; i < shows.length; i++) {
+            watched.put(shows[i], watched.getOrDefault(shows[i], 0) + durations[i]);
+        }
+
+        return watched.entrySet()
+                .stream()
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                .map(Map.Entry::getValue)
+                .limit(k)
+                .reduce(0, (a, b) -> a + b);
+    }
 }
